@@ -21,24 +21,24 @@ IT Specialist - Nuclear Regulatory Commission
   - C++
   - Java
 
-1. Backend
-* SQL
-* PHP
+- Backend
+  - SQL
+  - PHP
 
-1. Front End
-* HTML/CSS/JS
-* React
-* JQuery
+- Front End
+  - HTML/CSS/JS
+  - React
+  - JQuery
 
-1. Development
-* Github
-* Agile/Scrum
+- Development
+  - Github
+  - Agile/Scrum
 
-1. Software 
-* VMware
-* PowerBI
-* Linux
-* Tableau
+- Software 
+  - VMware
+  - PowerBI
+  - Linux
+  - Tableau
 
 # Hobbies
 
