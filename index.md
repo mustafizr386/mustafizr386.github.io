@@ -16,25 +16,25 @@ IT Specialist - Nuclear Regulatory Commission
 
 # Skills
 
-* Programming
-* Python
-* C++
-* Java
+- Programming
+  - Python
+  - C++
+  - Java
 
-* Backend
+1. Backend
 * SQL
 * PHP
 
-* Front End
+1. Front End
 * HTML/CSS/JS
 * React
 * JQuery
 
-* Development
+1. Development
 * Github
 * Agile/Scrum
 
-* Software 
+1. Software 
 * VMware
 * PowerBI
 * Linux
