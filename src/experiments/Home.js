@@ -17,7 +17,6 @@ const Portfolio = () => {
     const handleClick = (event) => {
         
         if (event.target.id == "Home"  ) {
-            alert("test");
             setClick(true);
             setIsHidden(false);
             const timer = setTimeout(() => {
