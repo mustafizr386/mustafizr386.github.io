@@ -1,0 +1,37 @@
+.container{
+    height: 100vh;
+    width: 100%;
+    background-color: #666; /* Background color */
+}
+.textcontainer {
+    padding-top:50px;
+    padding-left: 100px;
+    padding-right: 100px;
+    text-align: left;
+    color:oldlace;
+}
+.hidden{
+    display: none;
+}
+
+.infoBox{
+    float: left;
+    position: relative;
+    left: 50px;
+    padding: 50px;
+    height: 400px;
+    width: 400px;
+    background-color: #666;
+}
+.infoBoxInside{
+  
+    height: 100%;
+    width: 100%;
+    background-color: #222;
+}
+.dragBar{
+    background-color: #444;
+    height: 30px;
+    width: 400px;
+
+}
