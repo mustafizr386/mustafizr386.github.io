@@ -3,61 +3,62 @@ import { useSpring, animated } from 'react-spring';
 import ReactDOM from "react-dom";
 import './Pages.css';
 import TypingEffect from './effects/TypingEffect';
-import ClickManager from './effects/ClickManager';
+
 
 const Portfolio = () => {
     const [isHidden, setIsHidden] = useState(false);
     const [isVisible, setIsVisible] = useState(true);
-    const [clicked, setClick] = useState(false);
+    const [bounce, setDebounce] = useState(false);
 
-    const customEvent = (eventName, eventHandler) => {
-
-    };
 
     const handleClick = (event) => {
-        
-        if (event.target.id == "Home"  ) {
-            setClick(true);
-            setIsHidden(false);
-            const timer = setTimeout(() => {
-                setIsVisible(true);
-            }, 1000);
-            setClick(false);
-            return () => clearTimeout(timer);
+
+        if (!bounce) {
+            setDebounce(true);
+            if (event.target.id === "Home") {
+
+                setIsHidden(false);
+                const timer = setTimeout(() => {
+                    setIsVisible(true);
+                }, 1000);
+                return () => clearTimeout(timer);
+            }
+            else if (event.target.id && event.target.tagName == "LI") {
+
+                setIsVisible(false);
+                const timer = setTimeout(() => {
+                    setIsHidden(true);
+                }, 500);
+                return () => clearTimeout(timer);
+            }
         }
-        else if (event.target.id ) {
-            setClick(true);
-            setIsVisible(false);
-            const timer = setTimeout(() => {
-                setIsHidden(true);
-            }, 500);
-            setClick(false);
-            return () => clearTimeout(timer);
-        }
-        
     };
 
 
     const fadeOutStyle = {
         opacity: isVisible ? 1 : 0,
-        transition: 'opacity 1s ease-out', 
+        transition: 'opacity 1s ease-out',
     };
 
+
     document.addEventListener('click', handleClick);
-return (
-    
-    <div class={isHidden ? 'hidden' : ''}>
-        <div style={fadeOutStyle}>
-        <div class="container" style={{ width: "800" }}>
-            <div class="textcontainer">
-            <TypingEffect text="Welcome to my humble portfolio. Here I'll have a collection of pictures and stories relating to myself and what I've done within the scope of computing and more. Although you are most likely here because you want to see a showcase of what I can create, so here's a little collection of some old programs I've made in school and outside of school." speed={5} />
 
-                </div>
-                </div>
-    </div>
-    </div>
 
-);
+
+    return (
+        <div class={isHidden ? "banner" :"bannerHome"}>
+            <h1>Mustafiz Rahman</h1>
+            <p>The landing page for all things related to me.</p>
+            <div class={isHidden ? 'hidden' : ''}>
+                <div style={fadeOutStyle}>
+                        <div class="textcontainer" style={{textAlign: 'center'}}>
+                            <TypingEffect text="Welcome to my humble portfolio. On this site will be a collection information about be presented in fun little interactive ways. Some of the pages might be a little drab as of right now, but they will soon be updated to have fun little functions added to them." speed={5} />
+
+                        </div>
+                </div>
+            </div>
+        </div>
+    );
 };
 
 

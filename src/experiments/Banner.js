@@ -1,6 +1,6 @@
 import React, { useState, createElement } from 'react';
 import { useSpring, animated } from 'react-spring';
-import './Banner.css';
+import './Pages.css';
 
 const Banner = () => {
 return (
