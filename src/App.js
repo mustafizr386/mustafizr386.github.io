@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useSpring, animated } from 'react-spring';
+import { DndProvider } from 'react-dnd'
+import { HTML5Backend } from 'react-dnd-html5-backend'
 import './App.css';
 
 
@@ -22,7 +24,9 @@ function App() {
             <Home />
             <AboutMe />
             <Skills />
+            
             <Hobbies />
+            
             <Contact />
             <Sidebar />
 

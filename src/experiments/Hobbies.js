@@ -2,14 +2,35 @@ import React, { useState, createElement } from 'react';
 import { useSpring, animated } from 'react-spring';
 import ReactDOM from "react-dom";
 import './Pages.css';
-import TypingEffect from './effects/TypingEffect';
+import GridLayout from "react-grid-layout";
+
+
+import rockclimb from './images/RockClimb.jpg';
+import boulderingText from './images/BoulderingText.png';
+import brakejob from './images/Brakes.jpg';
+import brakejobText from './images/BrakeText.png';
+import carposter from './images/CarPosterCollage.jpg';
+import carposterText from './images/CarPosterText.png';
+
+
+
+
+  
 
 const Hobbies = () => {
     const [isHidden, setIsHidden] = useState(true);
     const [isVisible, setIsVisible] = useState(false);
     const [bounce, setDebounce] = useState(false);
 
-    
+
+    const layout = [
+        { i: "rockclimb",x: 0, y: 0, w: 1, h: 1},
+        { i: "brakejob", x: 1, y: 0, w: 1, h: 1},
+        { i: "carposter", x: 2, y: 0, w: 1, h: 1}
+      ];
+
+ 
+
     const handleClick = (event) => {
         if(!bounce){   
             
@@ -36,7 +57,7 @@ const Hobbies = () => {
 
     const fadeOutStyle = {
         opacity: isVisible ? 1 : 0,
-        transition: 'opacity 1s ease-out', // Adjust the transition duration and timing function
+        transition: 'opacity 1s ease-out'
     };
 
     document.addEventListener('click', handleClick);
@@ -47,11 +68,30 @@ return (
         <div style={fadeOutStyle}>
 
             <div class="container" style={{ width: "800" }}>
-                <div class="textcontainer">
+                <div class="textcontainer" >
                     <p>
-                        Currently I have nothing to put here, but I plan to place photos of me partaking in my various hobbies ranging from photography, welding, auto work, gardening, etc. They will be in the format of polaroids (once i populate the hobbies it'll make more sense) and will be interactable. For now though, you will just have to imagine that scenario in as i work out the design for the rest of this portfolio.
-                        </p>
-
+                       Here's a pin board of projects and activities that I've done. Feel free to shuffle the photos around.
+                    </p>
+                        
+                    <GridLayout
+                    className="layout"
+                    layout={layout}
+                    cols={4}
+                    rowHeight={675}
+                    autoSize={true}
+                    width={2000}
+                    >
+                        <div key="rockclimb"> 
+                        <Polaroid  img1={rockclimb} img2={boulderingText}/>
+                        </div>
+                        <div key="brakejob">
+                        <Polaroid  img1={brakejob} img2={brakejobText}/>
+                        </div>
+                        <div key="carposter">
+                        <Polaroid  img1={carposter} img2={carposterText}/>
+                        </div>
+                        </GridLayout>
+    
                 </div>
             </div>
         </div>
@@ -59,6 +99,34 @@ return (
 
 );
 };
+
+
+
+function Polaroid(props) {
+    const { img1, img2} = props;
+  
+  
+  
+  
+    return (
+
+            <div style={{float:'left'}}class="polaroidFrame" >
+                <div class="polaroidContainer">
+                    <div class="crosshatch">
+                        <div class="crosshatchrev">
+                            <div class="polaroidImage">
+                                <img draggable="false" class="polaroidImageInside" src={img1} alt="rockclimbing" />
+                            </div>
+                            <div class="polaroidText">
+                                <img draggable="false" class="polaroidTextImage" src={img2} alt="rockclimbingtext" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+    );
+  }
 
 
 export default Hobbies;

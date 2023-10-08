@@ -37,7 +37,7 @@ const Sidebar = () => {
 
     <animated.div className="sidebar" style={sidebarProps} onMouseEnter={open} onMouseLeave={collapse} >
       <div className="toggle-button" >
-        <div className="menue">Menue</div>
+        <div className="menu">Menu</div>
         <div className="plus">{displayText}</div>
       </div>
       <ul>

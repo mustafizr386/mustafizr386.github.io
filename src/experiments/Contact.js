@@ -15,7 +15,6 @@ const Contact = () => {
 
     const handleClick = (event) => {
         if (!bounce) {
-            console.log(event.target.tagName);
             setDebounce(true);
             if (event.target.id == "Contact") {
 
@@ -39,7 +38,7 @@ const Contact = () => {
 
     const fadeOutStyle = {
         opacity: isVisible ? 1 : 0,
-        transition: 'opacity 1s ease-out',
+        transition: 'opacity 1s ease-out'
     };
 
     document.addEventListener('click', handleClick);

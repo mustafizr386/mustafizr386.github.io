@@ -36,7 +36,7 @@ const AboutMe = () => {
 
     const fadeOutStyle = {
         opacity: isVisible ? 1 : 0,
-        transition: 'opacity 1s ease-out', // Adjust the transition duration and timing function
+        transition: 'opacity 1s ease-out'
     };
 
     document.addEventListener('click', handleClick);
