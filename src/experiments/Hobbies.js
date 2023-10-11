@@ -13,7 +13,8 @@ import carposter from './images/CarPosterCollage.jpg';
 import carposterText from './images/CarPosterText.png';
 
 
-
+import '/node_modules/react-grid-layout/css/styles.css';
+import '/node_modules/react-resizable/css/styles.css';
 
   
 
@@ -21,8 +22,10 @@ const Hobbies = () => {
     const [isHidden, setIsHidden] = useState(true);
     const [isVisible, setIsVisible] = useState(false);
     const [bounce, setDebounce] = useState(false);
-
-
+    const [gridSize, setGridSize] = useState(1200);
+    const [resizeBounce, setResizeBounce] = useState(true);
+	const [height, setHeight] = useState(800);
+	
     const layout = [
         { i: "rockclimb",x: 0, y: 0, w: 1, h: 1},
         { i: "brakejob", x: 1, y: 0, w: 1, h: 1},
@@ -36,12 +39,17 @@ const Hobbies = () => {
             
             setDebounce(true);
             if (event.target.id == "Hobbies"  ) {
-            
+
+				
                 setIsHidden(false);
                 const timer = setTimeout(() => {
                     setIsVisible(true);
+					if(document.getElementById("container").offsetWidth != 0){
+						setGridSize(document.getElementById("container").offsetWidth *.9);
+						setHeight(document.getElementById("container").offsetHeight * .6);
+					}
                 }, 1000);
-                
+
             }
             else if (event.target.id && event.target.tagName =="LI" ) {
         
@@ -53,7 +61,16 @@ const Hobbies = () => {
             }
         }
     };
-
+	
+    const updateSize = (event) =>{
+        
+        if(isVisible && resizeBounce){
+            //console.log(document.getElementById("image").offsetHeight *.6);
+            setResizeBounce(false);
+            setGridSize(document.getElementById("container").offsetWidth*.9);
+			//setHeight(document.getElementById("image").offsetHeight * .6);
+        }
+    }
 
     const fadeOutStyle = {
         opacity: isVisible ? 1 : 0,
@@ -61,14 +78,16 @@ const Hobbies = () => {
     };
 
     document.addEventListener('click', handleClick);
-
+	window.addEventListener('resize', updateSize);
+	
+	
 return (
     
     <div class={isHidden ? 'hidden' : ''}>
         <div style={fadeOutStyle}>
 
             <div class="container" style={{ width: "800" }}>
-                <div class="textcontainer" >
+                <div id="container" class="textcontainer" >
                     <p>
                        Here's a pin board of projects and activities that I've done. Feel free to shuffle the photos around.
                     </p>
@@ -77,11 +96,12 @@ return (
                     className="layout"
                     layout={layout}
                     cols={4}
-                    rowHeight={675}
+                    rowHeight={height}
                     autoSize={true}
-                    width={2000}
+                    width={gridSize}
+					isResizable={false}
                     >
-                        <div key="rockclimb"> 
+                        <div  key="rockclimb"> 
                         <Polaroid  img1={rockclimb} img2={boulderingText}/>
                         </div>
                         <div key="brakejob">
@@ -91,7 +111,7 @@ return (
                         <Polaroid  img1={carposter} img2={carposterText}/>
                         </div>
                         </GridLayout>
-    
+	
                 </div>
             </div>
         </div>

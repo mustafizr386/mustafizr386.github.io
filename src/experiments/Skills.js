@@ -76,7 +76,7 @@ const Skills = () => {
                 
                 <div class="container" style={{ width: "800" }}>
                     <div class="textcontainer">
-                    <p>Here's some more information about my technology skills with some samples programs to along with them. Also don't worry, they won't contain some hidden virus designed to take over your computer, if I wanted to do that then I'd just copy some javascript malware from a torrenting site and put it in my website</p> 
+                    <p>Here's some more information about my technology skills:</p> 
 
                         <FlipCard front="Java" back="I've been working with java for over 4 years with most of my experience in an educational setting. This language along with python are my go to languages for solving labs, programming competition questions, and for more complex math problems." 
                         frontCSS={{backgroundColor: 'orange', width: '200px'}} backCSS={{ width: '400px',backgroundColor: '#e67e00'}}  click={Java} clickHandler={handleCardClick}/>
